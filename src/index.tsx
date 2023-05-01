@@ -1,19 +1,71 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Applications from './pages/applications';
+import ToDoList, {loader as todoListLoader, action as todoAction, todoDelete} from './pages/todolist';
+import Details, {loader as detailLoader, 
+                action as updateDetailAction
+                } from './components/details';
+import CardGrid, {loader as cardLoader} from './components/cardgrid';
+import ErrorPage from './error-page';
+// import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "applications/:user/",
+        element: <Applications />,
+        children: [
+          {
+            index: true,
+            element: <CardGrid />,
+            loader: cardLoader
+          },
+          {
+            path: "details/:id/",
+            element: <Details />,
+            loader: detailLoader,
+          },
+          {
+            path: "details/:id/update/",
+            action: updateDetailAction
+          },
+        ]
+      },
+      {
+        path: ":user/todolist/",
+        element: <ToDoList />,
+        loader: todoListLoader,
+      },
+      {
+        path: ":user/todolist/add",
+        action: todoAction,
+      },
+      {
+        path: ":user/todolist/delete/:id",
+        action: todoDelete,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

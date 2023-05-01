@@ -1,0 +1,49 @@
+.table-wrapper {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+.form-wrapper {
+  margin-top: 20px;
+  display: block;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(68, 60, 60, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+}
+.form-wrapper .todo-input:required:invalid {
+  border-color: red;
+}
+.form-wrapper .todo-input:valid {
+  border-color: green;
+}
+.form-wrapper .todo-group {
+  display: flex;
+  margin: 15px 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-wrapper .todo-group .todo-label {
+  margin-right: 8px;
+  margin-left: 8px;
+  line-height: 30px;
+  width: 20%;
+  display: block;
+}
+.form-wrapper .todo-group-2 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.form-wrapper .todo-group-2 .todo-group {
+  width: 50%;
+  justify-content: flex-start;
+}
+.form-wrapper .todo-group-2 .todo-group .todo-label {
+  margin-right: 8px;
+  margin-left: 8px;
+  width: 20%;
+  display: block;
+}
+.form-wrapper .todo-submit {
+  margin-right: 8px;
+}

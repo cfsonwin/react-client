@@ -1,0 +1,23 @@
+.Info-wrapper {
+  width: 100%;
+}
+.Info-wrapper h1 {
+  margin: 5px 0;
+  font-size: 28px;
+}
+.Info-wrapper .panel {
+  padding: 0 20px;
+  width: 100%;
+}
+.Info-wrapper .panel h2 {
+  font-size: 24px;
+  width: 60%;
+  color: #3878ac;
+  margin: 5px 0;
+  padding-left: 5px;
+  border-bottom: 2px solid #3878ac;
+}
+.Info-wrapper .panel ul,
+.Info-wrapper .panel ol {
+  font-size: 20px;
+}

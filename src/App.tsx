@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Outlet, Link } from "react-router-dom";
 import './App.css';
 
 function App() {
+  // const appList:string[] = ["Counter", "Todo List"]
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className='description'>
+          React App with Typescript
+        </div>
+        <div className='navbar'>
+          <Link to={"/applications/Lawi/"} className='nav-item'>Applications</Link>
+          <Link to={"/Lawi/todolist/"} className='nav-item'>Todo List</Link>
+        </div>
       </header>
+      <div className='main-content'>
+        <Outlet />
+      </div>
     </div>
   );
 }
