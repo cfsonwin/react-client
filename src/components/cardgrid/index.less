@@ -1,0 +1,96 @@
+.new-app-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 720px) {
+        #btn01 {
+            align-self: flex-end;
+            width: 200px;
+            margin: 10px;
+        }
+        #btn02 {
+            display: none;
+        }
+        .new-app-form{
+            height: calc(100vh - 100px) !important; 
+            width: 0;
+            position: absolute;
+            transform: translate(calc(-20px - 10vw), -40px);
+            background-color: rgb(255, 255, 255);
+            border: 1px solid black;
+            border-radius: 0 5px 5px 0;
+            z-index: 100;
+            overflow: hidden;
+            form {
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                padding-top: 50px;
+                label {
+                    margin-top: 10px;
+                }
+                input {
+                    border: 1px solid #d9d9d9;
+                }
+                input:hover {
+                    border-color: #40a9ff;
+                }
+                input:focus {
+                    border: 1px solid #d9d9d9;
+                    outline: none;
+                    box-shadow: 2px 2px 2px #40a9ff;;
+                }
+                button {
+                    margin-top: 10px;
+                }
+            }
+            
+        }
+    }
+    @media screen and (max-width: 720px) {
+        justify-content: center;
+        align-items: center;
+        #btn01 {
+            display: none;
+        }
+        #btn02 {
+            width: 200px;
+            margin: 10px;
+        }
+        .new-app-form{
+            height: 0px;
+            width: 100% !important;
+            background-color: white;
+            // border: 1px solid black;
+            box-shadow: 2px 2px 2px #d9d9d9;;
+            border-radius: 5px;
+            margin: 10px;
+            overflow: hidden;
+            form {
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                p {
+                    margin-bottom: 10px;
+                }
+                label {
+                    margin-top: 10px;
+                }
+                input {
+                    border: 1px solid #d9d9d9;
+                }
+                input:hover {
+                    border-color: #40a9ff;
+                }
+                input:focus {
+                    border: 1px solid #d9d9d9;
+                    outline: none;
+                    box-shadow: 2px 2px 2px #40a9ff;;
+                }
+                button {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

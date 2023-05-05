@@ -17,11 +17,11 @@ export type todoItemT = {
 }
 
 enum priorityEnum {
-  "Very High"=5,
-  "High"=4,
+  "Very High"=1,
+  "High"=2,
   "Medium"=3,
-  "Low"=2,
-  "Very Low"=1
+  "Low"=4,
+  "Very Low"=5
 }
 
 enum statusEnum {
@@ -122,7 +122,7 @@ export default function ToDoList(){
   const { todoList } = useLoaderData() as LoaderData;
   const myForm = useRef<HTMLFormElement>(null)
   return (
-    <div>
+    <div className='todo-wrapper'>
       <div className='table-wrapper'>
         <Table columns={columns} dataSource={todoList.data} rowKey={(record)=>record._id?record._id:0}/>
         

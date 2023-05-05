@@ -6,6 +6,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+
     }
     .App-header {
         background-color: #282c34;
@@ -13,13 +15,17 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        font-size: calc(10px + 2vmin);
+        font-size: 26px;
         color: white;
+        text-align: center;
+        box-sizing: border-box;
         .description {
             padding: 10px;
+            height: 52px;
         }
         .navbar {
             width: 100%;
+            height: 48px;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -29,7 +35,7 @@
                 padding: 3px;
                 width: 100%;
                 border: 1px white solid;
-                text-align: center;
+                
             }
             .nav-item:hover{
                 background-color: #fff;

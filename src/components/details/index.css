@@ -19,5 +19,9 @@
 }
 .Info-wrapper .panel ul,
 .Info-wrapper .panel ol {
-  font-size: 20px;
+  font-size: 16px;
+}
+.Info-wrapper .panel p {
+  margin: 0;
+  font-size: 18px;
 }

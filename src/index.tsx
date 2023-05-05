@@ -12,7 +12,8 @@ import ToDoList, {loader as todoListLoader, action as todoAction, todoDelete} fr
 import Details, {loader as detailLoader, 
                 action as updateDetailAction
                 } from './components/details';
-import CardGrid, {loader as cardLoader} from './components/cardgrid';
+import CardGrid, {loader as cardLoader, action as addNewConpanyAction} from './components/cardgrid';
+import {action as stateUpdateAction} from "./components/card"
 import ErrorPage from './error-page';
 // import reportWebVitals from './reportWebVitals';
 
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
             loader: cardLoader
           },
           {
+            path: "add/",
+            action: addNewConpanyAction
+          },
+          {
+            path: "stateupdate/",
+            action: stateUpdateAction
+          },
+          {
             path: "details/:id/",
             element: <Details />,
             loader: detailLoader,
@@ -41,6 +50,9 @@ const router = createBrowserRouter([
             action: updateDetailAction
           },
         ]
+      },
+      {
+        path: "applications/:user/new-applications",
       },
       {
         path: ":user/todolist/",

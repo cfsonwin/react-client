@@ -1,10 +1,11 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Form } from 'react-router-dom'
 import "./index.css"
 export default function Applications() {
   return (
+
     <div className='application-wrapper'>
-        <Outlet/>
+      <Outlet/>
     </div>
+    
   )
 }
