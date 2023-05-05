@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2. Server side code is here https://github.com/cfsonwin/react-server.git
+
+## Technology Stack
+* React & Typescript
+* React-Router 
+* Antd 
 
 ## Available Scripts
 
