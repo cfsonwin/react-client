@@ -4,12 +4,16 @@
   flex-direction: column;
 }
 @media screen and (min-width: 720px) {
-  .new-app-wrapper #btn01 {
-    align-self: flex-end;
+  .new-app-wrapper .function-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .new-app-wrapper .function-wrapper #btn01 {
     width: 200px;
     margin: 10px;
   }
-  .new-app-wrapper #btn02 {
+  .new-app-wrapper .function-wrapper #btn02 {
     display: none;
   }
   .new-app-wrapper .new-app-form {
@@ -52,10 +56,16 @@
     justify-content: center;
     align-items: center;
   }
-  .new-app-wrapper #btn01 {
+  .new-app-wrapper .function-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .new-app-wrapper .function-wrapper #btn01 {
     display: none;
   }
-  .new-app-wrapper #btn02 {
+  .new-app-wrapper .function-wrapper #btn02 {
     width: 200px;
     margin: 10px;
   }

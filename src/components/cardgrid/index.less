@@ -3,14 +3,19 @@
     display: flex;
     flex-direction: column;
     @media screen and (min-width: 720px) {
-        #btn01 {
-            align-self: flex-end;
-            width: 200px;
-            margin: 10px;
+        .function-wrapper{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #btn01 {
+                width: 200px;
+                margin: 10px;
+            }
+            #btn02 {
+                display: none;
+            }
         }
-        #btn02 {
-            display: none;
-        }
+        
         .new-app-form{
             height: calc(100vh - 100px) !important; 
             width: 0;
@@ -50,13 +55,21 @@
     @media screen and (max-width: 720px) {
         justify-content: center;
         align-items: center;
-        #btn01 {
-            display: none;
+        .function-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            #btn01 {
+                display: none;
+            }
+            #btn02 {
+                width: 200px;
+                margin: 10px;
+            }
         }
-        #btn02 {
-            width: 200px;
-            margin: 10px;
-        }
+        
         .new-app-form{
             height: 0px;
             width: 100% !important;
