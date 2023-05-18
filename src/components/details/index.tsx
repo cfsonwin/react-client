@@ -22,9 +22,9 @@ export async function action({params, request}:any){
 }
 
 
-interface LoaderData {
-  initHtml: string;
-}
+// interface LoaderData {
+//   initHtml: string;
+// }
 
 export default function Details() {
   

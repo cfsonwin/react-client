@@ -4,7 +4,7 @@ import Status from '../status';
 import "./index.css"
 import { Link, useSubmit, useParams, redirect } from 'react-router-dom';
 import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
+import { Dropdown } from 'antd';
 import { cardStEnum } from "../status"
 import { updateApplications } from "../../api/requests"
 
@@ -53,7 +53,7 @@ export default function MyCard(props:cardProps) {
     const cardStArray = ["Preparing",
                         "Progressing",
                         "Rejected",
-                        "Passed"].filter((v,i)=>i!=props.status)
+                        "Passed"].filter((v,i)=>i!==props.status)
 
     const items: MenuProps['items'] = cardStArray.map((v,i)=>{
         let key:string = (i + 1).toString()

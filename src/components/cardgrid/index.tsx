@@ -136,7 +136,7 @@ export default function CardGrid() {
             const cardStArray = ["Preparing",
                 "Progressing",
                 "Rejected",
-                "Passed"].filter((v,i)=>i!=card.status)
+                "Passed"].filter((v,i)=>i!==card.status)
 
             const items: MenuProps['items'] = cardStArray.map((v,i)=>{
                 let key:string = (i + 1).toString()
