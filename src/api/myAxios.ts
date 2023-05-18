@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from "axios"
-import config from "./config.json"
+import config from "../../config/ipconfig.json"
 export default function myAxios(url:string, data={}, type="GET"):any{
     axios.defaults.baseURL = `${config.ip}:5001`;
     console.log("url:", url, "type:", type );
