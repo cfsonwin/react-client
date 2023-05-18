@@ -1,7 +1,7 @@
 import axios, {AxiosResponse} from "axios"
-
+import config from "./config.json"
 export default function myAxios(url:string, data={}, type="GET"):any{
-    axios.defaults.baseURL = "http://192.168.178.84:5001";
+    axios.defaults.baseURL = `${config.ip}:5001`;
     console.log("url:", url, "type:", type );
     console.log("Axios Data:", data);
     return new Promise((resolve, reject)=>{
