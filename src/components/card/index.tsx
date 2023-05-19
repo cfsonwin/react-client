@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState} from 'react'
+import React, { SyntheticEvent, useState } from 'react'
 import { EditOutlined, SettingOutlined } from '@ant-design/icons';
 import Status from '../status';
 import "./index.css"
@@ -22,10 +22,13 @@ export const action = async ({params, request}:any)=>{
     const formData = await request.formData();
     const updates = Object.fromEntries(formData);
     console.log(updates._id, parseInt(updates.newState));
-    await updateApplications(params.user, {
+    const res = await updateApplications(params.user, {
         _id: updates._id,
         newSt: parseInt(updates.newState)
-    })
+    }).then(
+        // ()=>{window.location.reload();}
+    )
+    console.log("****",res);
     return redirect(`/applications/${params.user}`)
 }
 

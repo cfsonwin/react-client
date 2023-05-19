@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState, useRef} from 'react'
+import React, { SyntheticEvent, useState, useRef, useEffect} from 'react'
 import { redirect, useLoaderData, Form, Link, useSubmit, useParams } from 'react-router-dom';
 import { Button, Segmented, Col, Row, SegmentedProps } from 'antd'
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
@@ -6,6 +6,11 @@ import { EditOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Space, Table, Tag, Dropdown, Select } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+
+// import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from "../../store/store"
+import { changeLayout, layoutInterface, changeFilter } from './gridLayoutSlice';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 
 import "./index.css"
 import MyCard, {cardProps} from '../card'
@@ -67,16 +72,31 @@ enum tableTagColor {
 }
 
 export default function CardGrid() {
+  const pageLayout = useAppSelector((state:RootState) => (state.layout as layoutInterface).pageLayout);
+  const listFilter = useAppSelector((state:RootState) => (state.layout as layoutInterface).filter);
+  const dispatch = useAppDispatch();
+  console.log("---", listFilter);
   const [showForm, setShowForm] = useState(false)
-  const [layout, setlayout] = useState("Kanban")
+//   const [layout, setlayout] = useState("Kanban")
   const [refresh, setrefresh] = useState(false)
   const { user } = useParams();
   const submit = useSubmit()
   const { applications } = useLoaderData() as LoaderData
-  const [appList, setappList] = useState(applications)
+  const [appList, setappList] = useState({
+    status:  applications["status"],
+    data: applications["data"].filter(v=>{
+        return cardStEnum[v.card.status] !== "Rejected"
+    })
+})
   const handleChange = (value: string)=>{
+    dispatch(changeFilter(value))
     if(value==="All"){
-        setappList(applications)
+        setappList({
+            status:  applications["status"],
+            data: applications["data"].filter(v=>{
+                return cardStEnum[v.card.status] !== "Rejected"
+            })
+        })
     }else{
         setappList({
             status:  applications["status"],
@@ -85,7 +105,6 @@ export default function CardGrid() {
             })
         })
     }
-    
   }
   const formWrapperRef = useRef<HTMLDivElement>(null)
   const stateChangeHandler = (target:HTMLElement, _id:string)=>{
@@ -99,13 +118,17 @@ export default function CardGrid() {
         method: "post",
     })
 }
-  const switchChangeHandler = (value:SegmentedProps["defaultValue"])=>{
-    console.log(value);
-    if(value === "List"){
-        setlayout("List")
-    }else{
-        setlayout("Kanban")
-    }
+
+//   const switchChangeHandler = (value:SegmentedProps["defaultValue"])=>{
+//     dispatch(changeLayout())
+//     if(value === "List"){
+//         setlayout("List")
+//     }else{
+//         setlayout("Kanban")
+//     }
+//   }
+  const switchChangeHandler = ()=>{
+    dispatch(changeLayout())
   }
   const columns: ColumnsType<cardData> = [
     {
@@ -168,7 +191,7 @@ export default function CardGrid() {
         <div className='new-app-wrapper'>
             <div className="function-wrapper">
                 <Segmented
-                    defaultValue={ 'Kanban' }
+                    defaultValue={ pageLayout }
                     options={[
                     {
                         value: 'Kanban',
@@ -216,8 +239,6 @@ export default function CardGrid() {
                 }}>Create New Application</Button>
             </div>
         
-        
-        
         <div className='new-app-form' ref={ formWrapperRef }>
             <Form method='post' action='add'>
                 <p style={{"fontSize": 26}}>Add a new Application</p>
@@ -235,7 +256,7 @@ export default function CardGrid() {
             </Form>
         </div>
       </div>
-      {(layout==="Kanban")?(<Row gutter={[{ xs: 8, sm: 16, md: 24, lg: 32 },{ xs: 8, sm: 16, md: 24, lg: 32 }]}>
+      {(pageLayout==="Kanban")?(<Row gutter={[{ xs: 8, sm: 16, md: 24, lg: 32 },{ xs: 8, sm: 16, md: 24, lg: 32 }]}>
             {
                 appList.data.map((app)=>{
                     return (

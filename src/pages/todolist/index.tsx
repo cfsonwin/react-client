@@ -55,12 +55,16 @@ export async function action({ request, params } : any) {
     priority: parseInt(updates["priority"]),
     status: parseInt(updates["status"])
   }
-  await addNewTodo(newTodo);
+  await addNewTodo(newTodo).then(
+    ()=>{window.location.reload();}
+);
   return redirect(`/${params.user}/todolist/`);
 }
 
 export async function todoDelete({ params }:any ) {
-  deleteTodo(params.id, params.user)
+  deleteTodo(params.id, params.user).then(
+    ()=>{window.location.reload();}
+)
   return redirect(`/${params.user}/todolist/`);
 }
 
@@ -88,9 +92,8 @@ const columns: ColumnsType<todoItemT> = [
     key: 'tags',
     render: (_, { priority, status }) => (
       <>
-        <Tag color={'green'} key={priority}>{priorityEnum[priority]}</Tag>
-        <Tag color={'geekblue'} key={status}>{statusEnum[status]}</Tag>
-        
+        <Tag color={'green'} key={priorityEnum[priority]}>{priorityEnum[priority]}</Tag>
+        <Tag color={'geekblue'} key={statusEnum[status]}>{statusEnum[status]}</Tag>
       </>
     ),
   },
